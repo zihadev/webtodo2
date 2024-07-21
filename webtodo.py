@@ -18,7 +18,9 @@ st.write("App")
 st.markdown("This app from <a href='https://www.udemy.com/course/the-python-mega-course/?couponCode=LETSLEARNNOWPP'>Udemy</a>", unsafe_allow_html=True)
 
 for index, todo in enumerate(todos):
-    key = functions.sanitize_string(f"{todo.strip().replace(' ', '').replace('\n', '')}_{index}")
+    clean_todo = todo.strip().replace(' ', '').replace('\n', '')
+    key = functions.sanitize_string(clean_todo + f"_{index}")
+
     checkbox = st.checkbox(todo.strip(), key=key)
     if checkbox:
         todos.pop(index)
